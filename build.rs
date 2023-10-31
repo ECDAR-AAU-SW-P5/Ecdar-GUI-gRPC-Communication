@@ -12,7 +12,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     #[cfg(feature = "serde")]
     let build = build.type_attribute(
         ".",
-        "#[derive(serde::Deserialize, serde::Serialize)]\n" + "#[serde(rename_all=\"camelCase\")]",
+        "#[derive(serde::Deserialize, serde::Serialize)]\n#[serde(rename_all=\"camelCase\")]",
     );
 
     build
