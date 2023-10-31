@@ -2,13 +2,20 @@
 name = "ecdar-gui-grpc-communication"
 version = "0.1.0"
 edition = "2021"
-build = "build.rs"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+client = []
+server = []
+serde = [ "dep:serde" ]
 
 [dependencies]
 prost = "0.12.1"
 tonic = "0.10.2"
+
+[dependencies.serde]
+version = "1.0.190"
+features = ["serde_derive"]
+optional = true
 
 [build-dependencies]
 tonic-build = "0.10.2"
