@@ -13,7 +13,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let build = build.type_attribute(
         ".",
         "#[derive(serde::Deserialize, serde::Serialize)]\n#[serde(rename_all=\"camelCase\")]",
-    );
+    ).enum_attribute(
+        ".", "#[serde(tag=\"type\", content=\"content\")]");
 
     build
         .emit_rerun_if_changed(true)
