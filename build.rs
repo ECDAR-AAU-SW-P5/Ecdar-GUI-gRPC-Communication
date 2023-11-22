@@ -10,11 +10,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let build = build.build_client(false);
 
     #[cfg(feature = "serde")]
-    let build = build.type_attribute(
-        ".",
-        "#[derive(serde::Deserialize, serde::Serialize)]\n#[serde(rename_all=\"camelCase\")]",
-    ).enum_attribute(
-        ".", "#[serde(tag=\"type\", content=\"content\")]");
+    let build = build.type_attribute(".", "#[ecdar_protobuff_rs_macros::serde_derive]");
 
     build
         .emit_rerun_if_changed(true)

@@ -3,10 +3,16 @@ name = "ecdar-protobuf"
 version = "0.1.0"
 edition = "2021"
 
+[workspace]
+members = [
+    "ecdar-protobuff-rs-macros"
+]
+
 [features]
+default = ["serde"]
 client = []
 server = []
-serde = [ "dep:serde" ]
+serde = [ "dep:serde", "dep:serde_repr" ]
 
 [dependencies]
 prost = "0.12.1"
@@ -16,6 +22,14 @@ tonic = "0.10.2"
 version = "1.0.190"
 features = ["serde_derive"]
 optional = true
+
+[dependencies.serde_repr]
+version = "0.1.17"
+optional = true
+
+[dependencies.ecdar-protobuff-rs-macros]
+version = "0.1.0"
+path = "ecdar-protobuff-rs-macros"
 
 [build-dependencies]
 tonic-build = "0.10.2"
