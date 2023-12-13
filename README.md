@@ -5,7 +5,7 @@ Run ```git pull --recurse-submodules``` to update the submodule
 
 
 ## Custom compilation
-To compile a lib with a different protobuff library set enviroment variable `ECDAR_PROTOBUFF_DIR`. Default is `./Ecdar-ProtoBuf/` the main branch of the submodule
+To compile a lib with a different protobuff library set enviroment variable `ECDAR_PROTOBUFF_DIR`. Default is `./Ecdar-ProtoBuf/` the submodule included.
 ```
 ECDAR_PROTOBUFF_DIR=/absolute/path/to/dir/
 ```
