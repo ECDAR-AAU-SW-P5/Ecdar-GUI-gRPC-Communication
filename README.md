@@ -3,6 +3,8 @@ A rust lib for communicating with Ecdar servers
 
 Run ```git pull --recurse-submodules``` to update the submodule
 
+
+## Custom compilation
 To compile a lib with a different protobuff library set enviroment variable `ECDAR_PROTOBUFF_DIR`. Default is `./Ecdar-ProtoBuf/` the main branch of the submodule
 ```
 ECDAR_PROTOBUFF_DIR=/absolute/path/to/dir/
@@ -16,7 +18,7 @@ ECDAR_PROTOBUFF_ROOT=file_name.proto
 ```
 
 
-Example use case
+#### Example use case
 
 ```
 ECDAR_PROTOBUFF_DIR=/dev/project/dir/Ecdar-ProtoBuf cargo run
