@@ -13,16 +13,22 @@ It is important that it is the absolute path because you cannot know the working
 
 
 To change the root file from `services.proto` do
-```
+```bash
 ECDAR_PROTOBUFF_ROOT=file_name.proto
 ```
 
 
 #### Example use case
+###### Bash
 
 ```
 ECDAR_PROTOBUFF_DIR=/dev/project/dir/Ecdar-ProtoBuf cargo run
 
+```
+
+###### PowerShell
+```PowerShell
+$Env:ECDAR_PROTOBUFF_DIR = "C:\\dev\\project\\dir\\Ecdar-ProtoBuf"; cargo run
 ```
 
 
