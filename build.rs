@@ -1,6 +1,15 @@
 use std::error::Error;
 
+const ECDAR_PROTOBUFF_DIR : &str = "ECDAR_PROTOBUFF_DIR";
+const ECDAR_PROTOBUFF_ROOT: &str = "ECDAR_PROTOBUFF_ROOT";
+
 fn main() -> Result<(), Box<dyn Error>> {
+    let mut dir = std::env::var(ECDAR_PROTOBUFF_DIR).unwrap_or("./Ecdar-ProtoBuf/".into());
+    if dir.chars().last().unwrap() != '/' { dir += "/" };
+    let root = std::env::var(ECDAR_PROTOBUFF_ROOT).unwrap_or("services.proto".into());
+
+    println!("Compiling protobuffers in {dir}{root} for rust");
+
     let build = tonic_build::configure();
 
     #[cfg(not(feature = "server"))]
@@ -14,9 +23,12 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     build
         .emit_rerun_if_changed(true)
-        .compile(&["Ecdar-ProtoBuf/services.proto"], &["Ecdar-ProtoBuf"])?;
+        .compile(&[format!("{dir}{root}")], &[dir])?;
 
     println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-env-changed={ECDAR_PROTOBUFF_DIR}");
+    println!("cargo:rerun-if-env-changed={ECDAR_PROTOBUFF_ROOT}");
 
     Ok(())
 }
+
